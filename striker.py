@@ -16,11 +16,11 @@ from telebot.types import ReplyKeyboardMarkup, KeyboardButton
 
 loop = asyncio.get_event_loop()
 
-TOKEN = '7044901026'
+TOKEN = 'Your Token'
 MONGO_URI = 'mongodb+srv://shahanshakhan19:FpH4UdprLRYlIPEG@cluster0.6xcbc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
-FORWARD_CHANNEL_ID = -100
-CHANNEL_ID = -100
-error_channel_id = -100
+FORWARD_CHANNEL_ID = -1002214438754
+CHANNEL_ID = -1002214438754
+error_channel_id = -1002214438754
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 
@@ -215,12 +215,12 @@ def send_welcome(message):
     markup = ReplyKeyboardMarkup(row_width=2, resize_keyboard=True, one_time_keyboard=True)
 
     # Create buttons
-    btn1 = KeyboardButton("1Day plan 🤖")
-    btn2 = KeyboardButton("1week Plan 💱")
-    btn3 = KeyboardButton("Permanent price♾️")
+    btn1 = KeyboardButton("Instant Plan 🧡")
+    btn2 = KeyboardButton("Instant++ Plan 💥")
+    btn3 = KeyboardButton("Admin cmnd⚠️")
     btn4 = KeyboardButton("My Account🏦")
     btn5 = KeyboardButton("Help❓")
-    btn6 = KeyboardButton("Contact admin🔰")
+    btn6 = KeyboardButton("Contact admin✔️")
 
     # Add buttons to the markup
     markup.add(btn1, btn2, btn3, btn4, btn5, btn6)
@@ -229,13 +229,13 @@ def send_welcome(message):
 
 @bot.message_handler(func=lambda message: True)
 def handle_message(message):
-    if message.text == "1Day plan 🤖":
-        bot.reply_to(message, "*150 rs ✅ @Python_bgmi*", parse_mode='Markdown')
-    elif message.text == "1week Plan 💱":
-        bot.reply_to(message, "*500 rs ✅ @Python_bgmi*", parse_mode='Markdown')
+    if message.text == "Instant Plan 🧡":
+        bot.reply_to(message, "*Instant Plan selected*", parse_mode='Markdown')
+    elif message.text == "Instant++ Plan 💥":
+        bot.reply_to(message, "*Instant++ Plan selected*", parse_mode='Markdown')
         attack_command(message)
-    elif message.text == "Permanent price♾️":
-        bot.send_message(message.chat.id, "*1200 rs ✅ DM-> @Python_bgmi*", parse_mode='Markdown')
+    elif message.text == "Admin cmnd⚠️":
+        bot.send_message(message.chat.id, "*/approve - /disapprove*", parse_mode='Markdown')
     elif message.text == "My Account🏦":
         user_id = message.from_user.id
         user_data = users_collection.find_one({"user_id": user_id})
@@ -252,9 +252,9 @@ def handle_message(message):
             response = "*No account information found. Please contact the administrator.*"
         bot.reply_to(message, response, parse_mode='Markdown')
     elif message.text == "Help❓":
-        bot.reply_to(message, "*use like this- <ip> <port> <duration> ✅ Query-@Python_bgmi*", parse_mode='Markdown')
-    elif message.text == "Contact admin🔰":
-        bot.reply_to(message, "*Only Main Admin @Python_bgmi*", parse_mode='Markdown')
+        bot.reply_to(message, "*Usage /Attack*", parse_mode='Markdown')
+    elif message.text == "Contact admin✔️":
+        bot.reply_to(message, "*Adminstrator @Python_bgmi*", parse_mode='Markdown')
     else:
         bot.reply_to(message, "*Invalid option*", parse_mode='Markdown')
 

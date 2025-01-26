@@ -18,7 +18,7 @@ jobs:
 
       - name: Check Codespace Status and Keep Alive
         run: |
-          CODESPACE_NAME="fuzzy-computing-machine-pjpjvv55rvjg276wg"
+          CODESPACE_NAME="laughing-fiesta-wr9ggwq79v7735977"
           STATUS=$(gh codespace list --json name,state | jq -r --arg name "$CODESPACE_NAME" '.[] | select(.name == $name) | .state')
 
           if [ -z "$STATUS" ]; then
